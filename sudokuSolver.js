@@ -36,6 +36,7 @@ function decode (grid) {
         // Find empty square and test numbers 1-9
         const options = nextOptions(grid);
         const validGrids = validateGrids(options);
+        return backtrackingAlogrithm(validGrids);
     }
 }
 
@@ -116,5 +117,42 @@ function validColumns(grid) {
 
 function validNines(grid) {
     // iterate through 9x9 squares to find duplicates
-    
+    // start at top left 9x9 square
+    const ninesCoordinates = [
+        [0, 0], [0, 1], [0, 2],
+        [1, 0], [1, 1], [1, 2],
+        [2, 0], [2, 1], [2, 2]
+    ];
+
+    // iterate through each square and move to check all 9x9 squares
+    for (let y = 0; y < 9; y += 3) {
+        for (let x = 0; x < 9; x += 3) {
+            let nines = [];
+            for (let i = 0; i < 9; i++) {
+                let coordinates = [...ninesCoordinates[i]]
+                coordinates[0] += y;
+                coordinates[1] += x;
+                if (nines.includes(grid[coordinates[0]][coordinates[1]])) {
+                    return false;
+                } else if (grid[coordinates[0]][coordinates[1]] != null) {
+                    nines.push(grid[coordinates[0]][coordinates[1]]);
+                }
+            }
+        }
+    }
+    return true;
+}
+
+function backtrackingAlogrithm (grids) {
+    if (grids.length < 1) {
+        return false;
+    } else {
+        let grid = grids.shift();
+        const solution = decode(grid);
+        if (solution != false) {
+            return solution;
+        } else {
+            return backtrackingAlogrithm(grids);
+        }
+    }
 }
