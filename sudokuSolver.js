@@ -79,6 +79,42 @@ function validateGrids(grids) {
 }
 
 function validGrid(grid) {
-    // return boolean - checks for duplicate numbers
-    return validRows && validColumns && validNines;
+    // return boolean - checks row, column, and 9x9 squares for duplicates
+    return validRows(grid) && validColumns(grid) && validNines(grid);
+}
+
+function validRows(grid) {
+    // iterate through rows to find duplicates
+    for (let x = 0; x < 9; x++) {
+        let row = [];
+        for (let y = 0; y < 9; y++) {
+            if (row.includes(grid[x][y])) {
+                return false;
+            } else if (grid[x][y] != null) {
+                row.push(grid[x][y]);
+            }
+        }
+    }
+    return true;
+}
+
+function validColumns(grid) {
+    // iterate through columns to find duplicates
+    for (let x = 0; x < 9; x++) {
+        let column = [];
+        for (let y = 0; y < 9; y++) {
+            if (column.includes(grid[y][x])) {
+                return false;
+            } else if (grid[y][x] != null) {
+                column.push(grid[y][x]);
+            }
+        }
+    }
+    return true;
+    
+}
+
+function validNines(grid) {
+    // iterate through 9x9 squares to find duplicates
+    
 }
