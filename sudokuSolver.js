@@ -35,6 +35,7 @@ function decode (grid) {
     } else {
         // Find empty square and test numbers 1-9
         const options = nextOptions(grid);
+        const validGrids = validateGrids(options);
     }
 }
 
@@ -65,4 +66,19 @@ function nextEmptySquare (grid) {
             }
         }
     }
+}
+
+function validateGrids(grids) {
+    let possibleGrids = [];
+    for (let x = 0; x < grids.length; x++) {
+        if (validGrid(grids[x])) {
+            possibleGrids.push(grids[x]);
+        }
+    }
+    return possibleGrids;
+}
+
+function validGrid(grid) {
+    // return boolean - checks for duplicate numbers
+    return validRows && validColumns && validNines;
 }
