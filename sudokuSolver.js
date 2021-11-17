@@ -40,7 +40,20 @@ function decode (grid) {
 
 function nextOptions (grid) {
     let testGrids = [];
-
+    const emptySquare = nextEmptySquare(grid);
+    if (emptySquare != undefined) {
+        const y = emptySquare[0];
+        const x = emptySquare[1];
+        // add numbers 1-9 to empty square and return grids for testing
+        for (let i = 1; i < 10; i++) {
+            let testGrid = [...grid];
+            let row = [...testGrid[y]]
+            row[x] = i;
+            testGrid[y] = row;
+            testGrids.push(testGrid);
+        }
+    }
+    return testGrids;
 }
 
 function nextEmptySquare (grid) {
