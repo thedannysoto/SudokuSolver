@@ -1,19 +1,3 @@
-// variable to fill empty spaces
-const e = null;
-
-// empty grid
-const emptyGrid = [
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e],
-    [e, e, e, e, e, e, e, e, e]
-];
-
 function isSolved(grid) {
     // loop through each square and check if all numbers are filled in
     // returns boolean
@@ -156,3 +140,34 @@ function backtrackingAlogrithm (grids) {
         }
     }
 }
+
+// variable to fill empty spaces
+const e = null;
+
+// empty grid
+const emptyGrid = [
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e],
+    [e, e, e, e, e, e, e, e, e]
+];
+
+// example grid for solving
+const exampleGrid = [
+    [e, 1, e, 8, e, 4, 9, e, e],
+    [e, e, 4, e, 5, e, e, e, e],
+    [e, e, e, e, 2, e, e, e, 8],
+    [e, e, 3, 4, e, 9, e, e, 6],
+    [e, 2, e, e, e, e, e, 3, e],
+    [e, e, e, e, e, 5, e, e, e],
+    [e, e, e, e, 8, e, e, e, e],
+    [7, e, e, e, e, e, 1, e, e],
+    [e, e, 2, 6, e, 3, e, e, 9]
+];
+
+console.log(decode(exampleGrid));
